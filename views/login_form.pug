@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+
+  h1 Login 
+
+  form(method="POST", action="")
+    div.form-group 
+      label(for="email") Email:
+      input.form-control(type="text" id="email" name="email" required="true")
+    div.form-group 
+      label(for="password") Password:
+      input.form-control(type="password" id="password" name="password" requred="true")
+    div.form-group 
+      button.btn.btn-primary(type="submit") Log in 
+      

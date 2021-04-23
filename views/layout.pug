@@ -1,0 +1,20 @@
+doctype html 
+html(lang="en")
+  head 
+    title= Practice3 
+    script(type="text/javascript").
+
+  body 
+    h1 Login Practice 3
+
+    a(href="/") Home
+    br
+    if (user)
+        a(href="/logout") Logout 
+        br
+    else 
+        a(href="/users/login") Login 
+        br
+        a(href="/users/register") Sign up
+
+    block content

@@ -1,10 +1,13 @@
 const mongoose = require("mongoose");
-//probably all wrong
 const Schema = mongoose.Schema;
-const dbConnectionString = "localhost:27017/practice3";
+const connection = mongoose.createConnection("mongodb://localhost:27017/practice3", {useNewUrlParser: true, useUnifiedTopology: true});
 
 const userSchema = new Schema({
     username: {
+        type: String,
+        required: true
+    },
+    email: {
         type: String,
         required: true
     },
@@ -14,5 +17,5 @@ const userSchema = new Schema({
     }
 });
 
-const User = mongoose.model("User", userSchema);
+const User = connection.model("User", userSchema);
 module.exports = User;
