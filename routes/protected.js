@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 router.get("/secret", (req,res,next)=>{
     let token = req.headers.authorization || req.cookies.auth;
     if (token){
-        jwt.verify(token, "secret", function(err, tokenData){
+        jwt.verify(token, "sshhh", function(err, tokenData){
             if (err){next(err)}
             console.log("USER DATA:");
             console.log(req.user);

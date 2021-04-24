@@ -61,7 +61,7 @@ exports.post_login = (req,res,next)=>{
             }
             console.log("USER");
             console.log(user);
-            const token = jwt.sign(user.toJSON(), "secret");
+            const token = jwt.sign(user.toJSON(), "sshhh");
             if (res.cookie("auth")!=token){
                 res.cookie("auth", token);
             }            
