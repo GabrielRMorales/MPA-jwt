@@ -49,7 +49,7 @@ exports.get_login = (req,res,next)=>{
 }
 
 exports.post_login = (req,res,next)=>{
-   passport.authenticate("local", {session: false}, (err,user,info)=>{
+   return passport.authenticate("local", {session: false}, (err,user,info)=>{
             console.log("post login authenticating...");
             console.log(err);
           
@@ -62,7 +62,9 @@ exports.post_login = (req,res,next)=>{
             console.log("USER");
             console.log(user);
             const token = jwt.sign(user.toJSON(), "secret");
-            res.cookie("auth", token);
+            if (res.cookie("auth")!=token){
+                res.cookie("auth", token);
+            }            
             res.locals.currentUser = user;
             console.log(res.locals.currentUser);
             return res.render("index");
