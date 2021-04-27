@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const connection = mongoose.createConnection("mongodb://localhost:27017/practice3", {useNewUrlParser: true, useUnifiedTopology: true});
+require("dotenv").config();
+
+const connection = mongoose.createConnection(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const userSchema = new Schema({
     username: {

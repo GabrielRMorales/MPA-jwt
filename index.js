@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const path = require("path");
 const userRoutes = require("./routes/users");
 const protectedRoutes = require("./routes/protected");
 const cookieParser = require("cookie-parser");
-//require("./passport");
+require("dotenv").config();
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine","pug");

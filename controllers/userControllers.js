@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 require("../passport");
+require("dotenv").config();
 
 exports.get_register = (req,res,next)=>{
     res.render("register_form");
@@ -61,7 +62,7 @@ exports.post_login = (req,res,next)=>{
             }
             console.log("USER");
             console.log(user);
-            const token = jwt.sign(user.toJSON(), "sshhh");
+            const token = jwt.sign(user.toJSON(), process.env.SECRET);
             if (res.cookie("auth")!=token){
                 res.cookie("auth", token);
             }            

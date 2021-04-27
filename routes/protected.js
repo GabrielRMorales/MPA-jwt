@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 router.get("/secret", (req,res,next)=>{
     let token = req.headers.authorization || req.cookies.auth;
     if (token){
-        jwt.verify(token, "sshhh", function(err, tokenData){
+        jwt.verify(token, process.env.SECRET, function(err, tokenData){
             if (err){next(err)}
             console.log("USER DATA:");
             console.log(req.user);
