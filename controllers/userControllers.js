@@ -68,7 +68,7 @@ exports.post_login = (req,res,next)=>{
             }            
             res.locals.currentUser = user;
             console.log(res.locals.currentUser);
-            return res.render("index");
+            return res.render("index", {user: res.locals.currentUser});
     
         })(req,res, next);
 

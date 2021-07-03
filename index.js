@@ -13,12 +13,13 @@ app.set("view engine","pug");
 app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-/*app.use(function(req,res,next){
+//fix res.locals
+app.use(function(req,res,next){
     res.locals.currentUser = req.user;
     next();
-})*/
+})
 app.get("/", (req,res,next)=>{
-    res.render("index");
+    res.render("index", {user: res.locals.currentUser});
 })
 app.use("/users", userRoutes);
 
