@@ -11,7 +11,7 @@ passport.use(new LocalStrategy({
     passwordField: "password"
 }, function(email, password, cb){
    
-    return User.findOne({email}).then(user=>{
+    User.findOne({email}).then(user=>{
         console.log(`User status: ${user}`);
         if (!user){
             return cb(null, false, {message: "Incorrect email or password"});
@@ -25,7 +25,7 @@ passport.use(new LocalStrategy({
                 return cb(null, false, {message: "pass incorrect" });
             }
         })
-    return cb(null, user, {message: "Logged in successfully"});
+    //return cb(null, user, {message: "Logged in successfully"});
     }).catch(err=>cb(err));
 }
 ))
