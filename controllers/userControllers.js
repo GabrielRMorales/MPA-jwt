@@ -50,7 +50,7 @@ exports.get_login = (req,res,next)=>{
 }
 
 exports.post_login = (req,res,next)=>{
-   passport.authenticate("local", {session: false}, (err,user,info)=>{
+   return passport.authenticate("local", {session: false}, (err,user,info)=>{
             console.log("post login authenticating...");
             console.log(err);
           
@@ -75,5 +75,9 @@ exports.post_login = (req,res,next)=>{
 }
 
 exports.get_logout = (req,res,next)=>{
-
+    if (res.cookie("auth")){
+        //res.cookie("auth", "");
+        req.logout();
+        return res.render("index");
+    }
 }
